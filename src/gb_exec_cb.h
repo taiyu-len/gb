@@ -1,6 +1,8 @@
 /* exec_cb.h */
-#pragma once
-#include "gb_exec.h"
+# ifndef  _GB_EXEC_CB_H
+# define  _GB_EXEC_CB_H
+# include "gb_exec.h"
+
 //!Switch for child functions
 int gb_exec_cb(struct gb*, byte);
 //!00-3F:rot[y] r[z]: Roll/shift register or memlocation
@@ -12,5 +14,5 @@ int gb_exec_cb_x2(struct gb*, byte);
 //!SET y, r[z]: set bit
 int gb_exec_cb_x3(struct gb*, byte);
 
-
+# endif
 

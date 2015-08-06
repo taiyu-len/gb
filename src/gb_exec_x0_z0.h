@@ -1,6 +1,7 @@
 /* exec_x0_z0.h */
-#pragma once
-#include "gb_exec.h"
+# ifndef  _GB_EXEC_X0_Z0_H
+# define  _GB_EXEC_X0_Z0_H
+# include "gb_exec.h"
 
 //!Switch for child functions
 int gb_exec_x0_z0(struct gb*, byte);
@@ -25,4 +26,5 @@ int gb_exec_x0_z0_y3(struct gb*);
 /** Add immediate byte to address if condition is true */
 int gb_exec_x0_z0_y47(struct gb *, byte op);
 
+# endif
 

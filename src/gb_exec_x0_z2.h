@@ -1,6 +1,7 @@
 /* exec_x0_z2.h */
-#pragma once
-#include "gb_exec.h"
+# ifndef  _GB_EXEC_X0_Z2_H
+# define  _GB_EXEC_X0_Z2_H
+# include "gb_exec.h"
 
 //!Switch for child functions
 int gb_exec_x0_z2(struct gb*, byte);
@@ -28,4 +29,6 @@ int gb_exec_x0_z2_q1_p2(struct gb *);
 
 //!3A:LDD  A,(HL): Put (HL) into A and decrement HL
 int gb_exec_x0_z2_q1_p3(struct gb *);
+
+# endif
 

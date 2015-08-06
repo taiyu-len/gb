@@ -1,6 +1,7 @@
 /* exec_x3_z3.h */
-#pragma once
-#include "gb_exec.h"
+# ifndef  _GB_EXEC_X3_Z3_H
+# define  _GB_EXEC_X3_Z3_H
+# include "gb_exec.h"
 
 //!Switch for child functions
 int gb_exec_x3_z3(struct gb*, byte);
@@ -12,3 +13,6 @@ int gb_exec_x3_z3_y1(struct gb *gb);
 int gb_exec_x3_z3_y6(struct gb *gb);
 //!F8:EI: Enable interrupts
 int gb_exec_x3_z3_y7(struct gb *gb);
+
+# endif
+

@@ -1,6 +1,7 @@
 /* exec_x0_z7.h */
-#pragma once
-#include "gb_exec.h"
+# ifndef  _GB_EXEC_X0_Z7_H
+# define  _GB_EXEC_X0_Z7_H
+# include "gb_exec.h"
 
 //!Switch for child functions
 int gb_exec_x0_z7(struct gb *gb, byte op);
@@ -29,3 +30,5 @@ int gb_exec_x0_z7_y6(struct gb *gb);
 
 //!0x3F:CCF: Complement Carry Flag
 int gb_exec_x0_z7_y7(struct gb *gb);
+
+# endif
