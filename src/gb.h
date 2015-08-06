@@ -1,0 +1,38 @@
+/**\file   gb.h */
+# ifndef  _GB_H
+# define  _GB_H
+
+# include "gb_common.h"
+# include "gb_memory.h"
+# include "gb_register.h"
+# include "gb_exec.h"
+
+//!Gameboy structure.
+/**used to store all gameboy related data */
+struct gb
+{
+  union   gb_register reg;
+  struct  gb_memory   mem;
+  //number of cycles to wait
+  short   cycle;
+  byte    stop;
+  //color or normal gameboy mode
+  enum GAMEBOY_INFO mode;
+  char *title;
+};
+
+/* Functions */
+
+/** Create and intialize a gameboy object loaded with a file
+ * \param gb if NULL creates and returns new gameboy [ must use free() ]
+ *           otherwise uses given gb
+ * \param filename to load
+ * \return returns gb*/
+struct gb *gb_loadfile(struct gb *gb, char const filename[]);
+
+/** Executets gameboy
+ * \param gb to run */
+int        gb_update  (struct gb *gb);
+
+# endif /*_GB_H*/
+

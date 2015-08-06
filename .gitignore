@@ -1,0 +1,10 @@
+# compiled files
+gb
+gb_header
+
+# gameboy roms used for testing
+*.gb
+
+# pdfs for gameboy documentation
+*.pdf
+

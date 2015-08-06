@@ -1,0 +1,98 @@
+/* gb_io.c */
+# include "gb_io.h"
+# include "gb.h"
+
+void gb_io_init(struct gb *gb)
+{
+  byte *io = gb->mem.io;
+  io[IO_TIMA - 0xFF00] = 0x00;
+  io[IO_TMA  - 0xFF00] = 0x00;
+  io[IO_TAC  - 0xFF00] = 0x00;
+  io[IO_NR10 - 0xFF00] = 0x80;
+  io[IO_NR11 - 0xFF00] = 0xBF;
+  io[IO_NR12 - 0xFF00] = 0xF3;
+  io[IO_NR14 - 0xFF00] = 0xBF;
+  io[IO_NR21 - 0xFF00] = 0x3F;
+  io[IO_NR22 - 0xFF00] = 0x00;
+  io[IO_NR24 - 0xFF00] = 0xBF;
+  io[IO_NR30 - 0xFF00] = 0x7F;
+  io[IO_NR31 - 0xFF00] = 0xFF;
+  io[IO_NR32 - 0xFF00] = 0x9F;
+  io[IO_NR33 - 0xFF00] = 0xBF;
+  io[IO_NR41 - 0xFF00] = 0xFF;
+  io[IO_NR42 - 0xFF00] = 0x00;
+  io[IO_NR43 - 0xFF00] = 0x00;
+  io[IO_NR44 - 0xFF00] = 0xBF;
+  io[IO_NR50 - 0xFF00] = 0x77;
+  io[IO_NR51 - 0xFF00] = 0xF3;
+  io[IO_NR52 - 0xFF00] = 0xF0;
+  io[IO_LCDC - 0xFF00] = 0x91;
+  io[IO_SCY  - 0xFF00] = 0x00;
+  io[IO_SCX  - 0xFF00] = 0x00;
+  io[IO_LYC  - 0xFF00] = 0x00;
+  io[IO_BGP  - 0xFF00] = 0xFC;
+  io[IO_OBP0 - 0xFF00] = 0xFF;
+  io[IO_OBP1 - 0xFF00] = 0xFF;
+  io[IO_WY   - 0xFF00] = 0x00;
+  io[IO_WX   - 0xFF00] = 0x00;
+  io[IO_KEY1 - 0xFF00] = 0x00;
+}
+
+char const * const gb_io_str[0x100] = {
+  [0x00] = "P1",
+  [0x01] = "SB",
+  [0x02] = "SC",
+  [0x04] = "DIV",
+  [0x05] = "TIMA",
+  [0x06] = "TMA",
+  [0x07] = "TAC",
+  [0x0F] = "IF",
+  [0x10] = "NR10",
+  [0x11] = "NR11",
+  [0x12] = "NR12",
+  [0x13] = "NR13",
+  [0x14] = "NR14",
+  [0x16] = "NR21",
+  [0x17] = "NR22",
+  [0x18] = "NR23",
+  [0x19] = "NR24",
+  [0x1A] = "NR30",
+  [0x1B] = "NR31",
+  [0x1C] = "NR32",
+  [0x1D] = "NR33",
+  [0x1E] = "NR34",
+  [0x20] = "NR41",
+  [0x21] = "NR42",
+  [0x22] = "NR43",
+  [0x23] = "NR44",
+  [0x24] = "NR50",
+  [0x25] = "NR51",
+  [0x26] = "NR52",
+  [0x3F] = "FF3F",
+  [0x40] = "LCDC",
+  [0x41] = "STAT",
+  [0x42] = "SCY",
+  [0x43] = "SCX",
+  [0x44] = "LY",
+  [0x45] = "LYC",
+  [0x46] = "DMA",
+  [0x47] = "BGP",
+  [0x48] = "OBP0",
+  [0x49] = "OBP1",
+  [0x4A] = "WY",
+  [0x4B] = "WX",
+  [0x4D] = "KEY1", //CGB Only
+  [0x4F] = "VBK",  //CGB Only
+  [0x51] = "HDMA1",//CGB Only
+  [0x52] = "HDMA2",//CGB Only
+  [0x53] = "HDMA3",//CGB Only
+  [0x54] = "HDMA4",//CGB Only
+  [0x55] = "HDMA5",//CGB Only
+  [0x56] = "RP",   //CGB Only
+  [0x68] = "BCPS", //CGB Only
+  [0x69] = "BCPD", //CGB Only
+  [0x6A] = "OCPS", //CGB Only
+  [0x6B] = "OCPD", //CGB Only
+  [0x70] = "SVBK", //CGB Only
+  [0xFF] = "IE"
+};
