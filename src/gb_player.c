@@ -42,10 +42,11 @@ int main(int argc, char **argv)
   gb_loadfile(&gb, gamefile);
 
   while(gb_update(&gb) == RET_SUCCESS) {
-    if(gb.reg.PC >= 0x2A0) getchar();
   };
 
   return EXIT_SUCCESS;
 fail:
   return EXIT_FAILURE;
 }
+
+

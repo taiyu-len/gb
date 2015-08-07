@@ -1,5 +1,29 @@
 /* exec_07.c */
 #include "gb_exec_x0_z7.h"
+//!0xx0_z7:RLCA: rotate A left, old bit 7 to carry flag
+static int gb_exec_x0_z7_y0(struct gb *gb);
+
+//!0x0F:RRCA: rotate A right, old bit 0 to carry flag
+static int gb_exec_x0_z7_y1(struct gb *gb);
+
+//!0x17:RLA: rotate A left through carry flag
+static int gb_exec_x0_z7_y2(struct gb *gb);
+
+//!0x1F:RRA: rotate A right through carry flag
+static int gb_exec_x0_z7_y3(struct gb *gb);
+
+//!0x27:DAA: Decimal adjust register A.This instruction adjusts register A so
+///     that the correct representation of binary coded decimal is obtained
+static int gb_exec_x0_z7_y4(struct gb *gb);
+
+//!0x2F:CPL: Complement A register (flip bits)
+static int gb_exec_x0_z7_y5(struct gb *gb);
+
+//!0x37:SCF: Set Carry Flag
+static int gb_exec_x0_z7_y6(struct gb *gb);
+
+//!0x3F:CCF: Complement Carry Flag
+static int gb_exec_x0_z7_y7(struct gb *gb);
 
 int gb_exec_x0_z7(struct gb *gb, byte op)
 {
@@ -11,6 +35,9 @@ int gb_exec_x0_z7(struct gb *gb, byte op)
     case 2: return gb_exec_x0_z7_y2(gb);
     case 3: return gb_exec_x0_z7_y3(gb);
     case 4: return gb_exec_x0_z7_y4(gb);
+    case 5: return gb_exec_x0_z7_y5(gb);
+    case 6: return gb_exec_x0_z7_y6(gb);
+    case 7: return gb_exec_x0_z7_y7(gb);
   }
   return RET_FAILURE;
 }

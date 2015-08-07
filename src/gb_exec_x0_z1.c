@@ -1,6 +1,14 @@
 /* exec_01.c */
 #include "gb_exec_x0_z1.h"
 
+//!LD rp[p], NN
+/** Put 16 bit immediate value into TABLE_RP[p] register */
+static int gb_exec_x0_z1_q0(struct gb*, byte);
+
+//!ADD HL, n: where n = {BC, DE, HL, SP}
+/**Add n to HL */
+static int gb_exec_x0_z1_q1(struct gb*, byte);
+
 int gb_exec_x0_z1(struct gb *gb, byte op)
 {
   byte q = OPCODE_Q(op);

@@ -8,3 +8,5 @@ gb_header
 # pdfs for gameboy documentation
 *.pdf
 
+# .d files
+*.d

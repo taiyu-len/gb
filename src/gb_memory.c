@@ -12,7 +12,17 @@ void gb_memory_init(struct gb *gb)
   if(gb_type == 0x80) { gb->mode = CGB_MODE; }
   else                { gb->mode = GB_MODE; }
   //set title
-  gb->title = (char(*)[16])&gb->mem.rom[0][ADDR_GAME_TITLE];
+  gb->title = (char *)&gb->mem.rom[0][ADDR_GAME_TITLE];
+
+  //clear flags
+  gb->stop
+    = gb->halt
+    = gb->cycle
+    = 0;
+  //clear screen
+  for(size_t i = 0; i < sizeof(gb->screen); ++i) {
+    gb->screen[i] = 0xFF;
+  }
 
   gb_io_init (gb);
   gb_mbc_init(gb);

@@ -1,5 +1,12 @@
 /* exec_03.c */
 #include "gb_exec_x0_z3.h"
+//!INC rp[p]
+/** Increment 16bit Register p */
+static int gb_exec_x0_z3_q0(struct gb*, byte);
+
+//!DEC rp[p]
+/** Decrement 16bit Register p */
+static int gb_exec_x0_z3_q1(struct gb*, byte);
 
 int gb_exec_x0_z3(struct gb *gb, byte op)
 {

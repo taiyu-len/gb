@@ -2,6 +2,15 @@
 # include "gb_exec_x3_z0.h"
 # include "gb_io.h"
 
+//!E0:LDH (a8), A
+static int gb_exec_x3_z0_y4(struct gb *);
+//!E8:ADD SP, r8
+static int gb_exec_x3_z0_y5(struct gb *);
+//!F0:LDH A,(a8)
+static int gb_exec_x3_z0_y6(struct gb *);
+//!F8:LD HL, SP+r8
+static int gb_exec_x3_z0_y7(struct gb *);
+
 int gb_exec_x3_z0(struct gb *gb, byte op)
 {
   byte y = OPCODE_Y(op);
@@ -36,7 +45,7 @@ int gb_exec_x3_z0(struct gb *gb, byte op)
 int gb_exec_x3_z0_y4(struct gb *gb)
 {
   byte addr = READ(REG(PC)++);
-  logf("LDH (0xFF%.2x),A|%s", addr,gb_io_str[addr]);
+  logf("LDH (0xFF%.2x),A|A=%.2x|IO : %s", addr, REG(A), gb_io_str[addr]);
 
   WRITE(0xFF00 + addr, REG(A));
 
@@ -64,7 +73,7 @@ int gb_exec_x3_z0_y6(struct gb *gb)
   byte addr = READ(REG(PC)++);
   REG(A) = READ(0xFF00 + addr);
 
-  logf("LDH A,(0xFF%.2x)|%s",addr,gb_io_str[addr]);
+  logf("LDH A,(0xFF%.2x)|A=%.2x|IO : %s",addr,REG(A),gb_io_str[addr]);
 
   gb->cycle += 12;
   return RET_SUCCESS;

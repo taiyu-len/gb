@@ -1,5 +1,9 @@
 /* exec_x3_z5.c */
-#include "gb_exec_x3_z5.h"
+# include "gb_exec_x3_z5.h"
+//!PUSH rp2[p]
+static int gb_exec_x3_z5_q0(struct gb*, byte);
+//!Call a16
+static int gb_exec_x3_z5_q1(struct gb*);
 
 int gb_exec_x3_z5(struct gb *gb, byte opcode)
 {

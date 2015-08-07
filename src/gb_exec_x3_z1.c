@@ -1,6 +1,19 @@
 /* exec_x3_z1.c */
 #include "gb_exec_x3_z1.h"
 
+//!POP rp2[p]
+static int gb_exec_x3_z1_q0(struct gb*, byte);
+//!Switch for child functions
+static int gb_exec_x3_z1_q1(struct gb*, byte);
+//!C9: RET: Pop two bytes from stack & jump to that address
+static int gb_exec_x3_z1_q1_p0(struct gb *gb);
+//!D9: RETI: Same as RET, but enable interrupts
+static int gb_exec_x3_z1_q1_p1(struct gb *gb);
+//!E9: JP (HL) : jump to address contained in HL
+static int gb_exec_x3_z1_q1_p2(struct gb *gb);
+//!F9: LD SP,HL
+static int gb_exec_x3_z1_q1_p3(struct gb *gb);
+
 
 //Switch for child functions
 int gb_exec_x3_z1(struct gb *gb, byte op)
@@ -53,7 +66,7 @@ int gb_exec_x3_z1_q1_p0(struct gb *gb)
 int gb_exec_x3_z1_q1_p1(struct gb *gb)
 {
   logf("RETI");
-  WRITE(IO_IE, 0x1F);
+  gb->mem.ime = 0xFF;
   REG(PC) = POP();
   gb->cycle += 16;
   return RET_SUCCESS;

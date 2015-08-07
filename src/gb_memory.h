@@ -16,6 +16,7 @@ struct gb_memory
   byte   hram[0x80];///< 128 bytes of high ram (stack)
   byte   ier;       ///< Interrupt enable register
 
+  byte   ime;       ///< Interrupt master enable flag, 00:disabled, FF:enabled
   //Memory bank controller
   struct gb_mbc mbc;
 };
@@ -28,18 +29,15 @@ void gb_memory_init(struct gb *);
 enum MEMORY_ADDR
 {
   //Offsets for memory sections
-  //Readonly
   MEM_READ_ONLY             = 0x0000,
     MEM_ROM_BANK_0          = 0x0000,
     MEM_ROM_BANK_N          = 0x4000,
-  //Writeonly
   MEM_WRITE_ONLY            = 0x0000,
     MEM_RAM_BANK_ENABLE     = 0x0000,//mbc1,2,3
     MEM_RAM_BANK_SELECT_LSB = 0x2000,
     MEM_ROM_BANK_SELECT_MSB = 0x3000,
     MEM_RAM_BANK_SELECT     = 0x4000,
     MEM_RAM_ROM_SELECT      = 0x6000,
-    //R/W section
   MEM_READ_WRITE            = 0x8000,
     MEM_VRAM                = 0x8000,
     MEM_ERAM                = 0xA000,

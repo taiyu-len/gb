@@ -1,6 +1,14 @@
 /* exec_x3_z3.c */
-#include "gb_exec_x3_z3.h"
-#include "gb_exec_cb.h"
+# include "gb_exec_x3_z3.h"
+# include "gb_exec_cb.h"
+//!C3:JP a16: Jump to immiate 16 bit address
+static int gb_exec_x3_z3_y0(struct gb *gb);
+//!CB:Prefix:  Prefix Call for doing bitwise operators
+static int gb_exec_x3_z3_y1(struct gb *gb);
+//!F3:DI: Disable interrupts
+static int gb_exec_x3_z3_y6(struct gb *gb);
+//!F8:EI: Enable interrupts
+static int gb_exec_x3_z3_y7(struct gb *gb);
 
 //Switch for child functions
 int gb_exec_x3_z3(struct gb *gb, byte op)
@@ -44,8 +52,7 @@ int gb_exec_x3_z3_y6(struct gb *gb)
 {
   //Disable interrupts. clear bits
   logf("DI");
-
-  WRITE(IO_IE, 0);
+  gb->mem.ime = 0x00;
 
   gb->cycle += 4;
   return RET_SUCCESS;
@@ -55,8 +62,7 @@ int gb_exec_x3_z3_y7(struct gb *gb)
 {
   //Inable Interrupts. 0,1,2,3,4 bits set
   logf("EI");
-
-  WRITE(IO_IE, 0x1F);
+  gb->mem.ime = 0xFF;
 
   gb->cycle += 4;
   return RET_SUCCESS;

@@ -1,6 +1,9 @@
 /* exec_x1.c */
 #include "gb_exec_x1.h"
 
+static
+int gb_exec_x1_z6(struct gb*);
+
 //LD r[y], r[z]; 8bit load
 int gb_exec_x1(struct gb *gb, byte op)
 {
@@ -36,9 +39,8 @@ int gb_exec_x1(struct gb *gb, byte op)
 //0x76:HALT
 int gb_exec_x1_z6(struct gb *gb)
 {
-  (void) gb;
+  gb->halt = 1;
   logf("|HALT");
-  //TODO halt gameboy
   return RET_SUCCESS;
 }
 
