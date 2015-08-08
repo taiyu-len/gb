@@ -166,7 +166,7 @@ union endian {
   do{ addr tmp = (ADDR);                      \
       union endian val = { .addr = (VALUE) }; \
       WRITE(tmp  , val.lsb);                  \
-      WRITE(tmp+1, val.lsb); }while(0)
+      WRITE(tmp+1, val.msb); }while(0)
 
 //pop or push value to/from stack
 # define POP() ({REG(SP)+=2; READ16(REG(SP)-2);})

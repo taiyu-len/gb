@@ -42,6 +42,8 @@ int main(int argc, char **argv)
   gb_loadfile(&gb, gamefile);
 
   while(gb_update(&gb) == RET_SUCCESS) {
+    if( gb.mem.mbc.read(&gb,gb.reg.PC) == 0
+        ||gb.reg.SP == 0xCFFF) getchar();
   };
 
   return EXIT_SUCCESS;
