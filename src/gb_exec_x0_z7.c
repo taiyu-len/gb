@@ -28,7 +28,7 @@ static int gb_exec_x0_z7_y7(struct gb *gb);
 int gb_exec_x0_z7(struct gb *gb, byte op)
 {
   byte y = OPCODE_Y(op);
-  logf("y%d",y);
+  logf("y%d|",y);
   switch(y) {
     case 0: return gb_exec_x0_z7_y0(gb);
     case 1: return gb_exec_x0_z7_y1(gb);

@@ -28,8 +28,9 @@ int gb_exec_x3_z5_q0(struct gb *gb, byte opcode)
 //CALL a16
 int gb_exec_x3_z5_q1(struct gb *gb)
 {
-  PUSH(REG(PC));
   addr address = READ16(REG(PC));
+  REG(PC) += 2;
+  PUSH(REG(PC));
   REG(PC) = address;
 
   logf("CALL 0x%x",address);

@@ -5,6 +5,8 @@
 int gb_exec_x3_z4(struct gb *gb, byte op)
 {
   addr address = READ16(REG(PC));
+  REG(PC) += 2;
+
   byte y = OPCODE_Y(op);
   if(y < 4) {
     if(TABLE_CC[y](gb)) {

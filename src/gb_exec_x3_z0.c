@@ -73,7 +73,10 @@ int gb_exec_x3_z0_y6(struct gb *gb)
   byte addr = READ(REG(PC)++);
   REG(A) = READ(0xFF00 + addr);
 
-  logf("LDH A,(0xFF%.2x)|A=%.2x|IO : %s",addr,REG(A),gb_io_str[addr]);
+  logf("LDH A,(0xFF%.2x)|A=%.2x|IO : %s",addr,REG(A)
+      , gb_io_str[addr] ? gb_io_str[addr]
+        : addr > 0x80   ? "stack"
+        :                 "unknown io_port");
 
   gb->cycle += 12;
   return RET_SUCCESS;

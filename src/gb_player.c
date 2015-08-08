@@ -1,5 +1,5 @@
 /* gb_player.c */
-#include "gb.h"
+# include "gb.h"
 
 # include <stdlib.h>
 # include <getopt.h>
@@ -41,10 +41,15 @@ int main(int argc, char **argv)
 
   gb_loadfile(&gb, gamefile);
 
-  while(gb_update(&gb) == RET_SUCCESS) {
-    if( gb.mem.mbc.read(&gb,gb.reg.PC) == 0
-        ||gb.reg.SP == 0xCFFF) getchar();
-  };
+  do {
+    if( gb.mem.mbc.read(&gb,gb.reg.PC) == 0xC9
+        ||gb.mem.mbc.read(&gb,gb.reg.PC) == 0xC4
+        ||gb.mem.mbc.read(&gb,gb.reg.PC) == 0xD4
+        ||gb.mem.mbc.read(&gb,gb.reg.PC) == 0xCC
+        ||gb.mem.mbc.read(&gb,gb.reg.PC) == 0xDC
+        ||gb.mem.mbc.read(&gb,gb.reg.PC) == 0xCD
+      ) getchar();
+  } while(gb_update(&gb) == RET_SUCCESS);
 
   return EXIT_SUCCESS;
 fail:
