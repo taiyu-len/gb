@@ -45,9 +45,12 @@ int gb_exec_x3_z0(struct gb *gb, byte op)
 int gb_exec_x3_z0_y4(struct gb *gb)
 {
   byte addr = READ(REG(PC)++);
-  logf("LDH (0xFF%.2x),A|A=%.2x|IO : %s", addr, REG(A), gb_io_str[addr]);
+  logf("LDH (0xFF%.2x),A|A=%.2x|IO : %s", addr, REG(A)
+      , gb_io_str[addr] ? gb_io_str[addr]
+        : addr > 0x80   ? "stack"
+        :                 "unknown io_port");
 
-  WRITE(0xFF00 + addr, REG(A));
+  WRITE(MEM_IO_PORTS + addr, REG(A));
 
   gb->cycle += 12;
   return RET_SUCCESS;
@@ -71,7 +74,7 @@ int gb_exec_x3_z0_y5(struct gb *gb)
 int gb_exec_x3_z0_y6(struct gb *gb)
 {
   byte addr = READ(REG(PC)++);
-  REG(A) = READ(0xFF00 + addr);
+  REG(A) = READ(MEM_IO_PORTS + addr);
 
   logf("LDH A,(0xFF%.2x)|A=%.2x|IO : %s",addr,REG(A)
       , gb_io_str[addr] ? gb_io_str[addr]

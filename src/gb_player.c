@@ -41,14 +41,17 @@ int main(int argc, char **argv)
 
   gb_loadfile(&gb, gamefile);
 
+  int x = 0;
   do {
+    if(x) getchar(), x=0;
     if( gb.mem.mbc.read(&gb,gb.reg.PC) == 0xC9
         ||gb.mem.mbc.read(&gb,gb.reg.PC) == 0xC4
         ||gb.mem.mbc.read(&gb,gb.reg.PC) == 0xD4
         ||gb.mem.mbc.read(&gb,gb.reg.PC) == 0xCC
         ||gb.mem.mbc.read(&gb,gb.reg.PC) == 0xDC
         ||gb.mem.mbc.read(&gb,gb.reg.PC) == 0xCD
-      ) getchar();
+        ||gb.reg.PC < 0x100
+    ) x = 1;
   } while(gb_update(&gb) == RET_SUCCESS);
 
   return EXIT_SUCCESS;

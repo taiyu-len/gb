@@ -1,6 +1,7 @@
 # compiled files
 gb
 gb_header
+*.a
 
 # gameboy roms used for testing
 *.gb

@@ -106,8 +106,7 @@ int gb_exec_x0_z2_q1_p2(struct gb *gb)
 {
   logf("LDI A,(HL)");
 
-  REG(A) = READ(REG(HL));
-  ++REG(HL);
+  REG(A) = READ(REG(HL)++);
 
   gb->cycle += 8;
   return RET_SUCCESS;

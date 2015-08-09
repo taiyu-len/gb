@@ -28,7 +28,7 @@ int gb_exec_x0_z1_q0(struct gb *gb, byte op)
   REG(PC) += 2;
   REG(r16[TABLE_RP[p]]) = address;
 
-  logf("LD %s,0x%4x", STR_RP[p], address);
+  logf("LD %s,0x%.4X", STR_RP[p], address);
   gb->cycle += 8;
 
   return RET_SUCCESS;

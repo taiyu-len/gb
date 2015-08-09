@@ -48,9 +48,10 @@ int gb_exec_x0_z0_y0(struct gb *gb)
 int gb_exec_x0_z0_y1(struct gb *gb)
 {
   addr im = READ16(REG(PC));
+  REG(PC) += 2;
+
   logf("LD (%4x),SP | SP=%.4x", im, REG(SP));
   WRITE16(im, REG(SP));
-  REG(PC) += 2;
   gb->cycle += 20;
   return RET_SUCCESS;
 }
@@ -67,6 +68,7 @@ int gb_exec_x0_z0_y3(struct gb *gb)
 {
   signed char offset = READ(REG(PC));
   ++REG(PC);
+
   logf("JR %d",offset);
   //jump relative to initial PC.
   REG(PC) += offset;

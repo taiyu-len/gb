@@ -80,7 +80,6 @@ int        gb_update(struct gb *gb)
     gb_update_exec(gb);
   }
   gb_update_int (gb); //interupts
-  gb_update_stat(gb);//screen drawing status
   gb_update_io  (gb);
 
   //Delay

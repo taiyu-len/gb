@@ -11,7 +11,7 @@ int gb_exec_x3_z7(struct gb *gb, byte op)
   REG(PC) = OPCODE_Y(op) * 0x08;
 
   gb->cycle += 12;
-  logf("RST 0x%.2x",OPCODE_Y(op));
+  logf("RST 0x%.2x",OPCODE_Y(op) * 8);
 
   return RET_SUCCESS;
 }
