@@ -6,6 +6,6 @@ FILE *LOGFILE = NULL;
 
 static void init(void) __attribute__((constructor));
 void init(void) {
-  LOGFILE = stdout;
+	LOGFILE = stdout;
 }
 

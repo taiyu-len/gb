@@ -24,14 +24,14 @@ typedef byte bank04[0x1000];
 //enums
 enum GAMEBOY_INFO
 {
-  //Gameboy type
-  CGB_MODE = 0,
-  GB_MODE  = 1,
+	//Gameboy type
+	CGB_MODE = 0,
+	GB_MODE  = 1,
 };
 
 enum RET_CODE {
-  RET_SUCCESS,
-  RET_FAILURE,
+	RET_SUCCESS,
+	RET_FAILURE,
 };
 
 # endif /*_GB_COMMON_H*/

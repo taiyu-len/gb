@@ -11,19 +11,19 @@
 /**used to store all gameboy related data */
 struct gb
 {
-  /* Data */
-  union   gb_register reg;
-  struct  gb_memory   mem;
-  /* screen */
-  byte    screen[160 * 144 * 3];
-  /* Timing */
-  short   cycle;
-  int     lcdc_cycle;
-  byte    stop;
-  byte    halt;
-  //color or normal gameboy mode
-  enum GAMEBOY_INFO mode;
-  char *title;
+	/* Data */
+	union   gb_register reg;
+	struct  gb_memory   mem;
+	/* screen */
+	byte    screen[160 * 144 * 3];
+	/* Timing */
+	short   cycle;
+	int     lcdc_cycle;
+	byte    stop;
+	byte    halt;
+	//color or normal gameboy mode
+	enum GAMEBOY_INFO mode;
+	char *title;
 };
 
 /* Functions */

@@ -5,12 +5,12 @@
 
 //!Memory bank controller, deterines how to read and write memory to gameboy
 struct gb_mbc {
-  byte (*read) (struct gb*, addr);
-  void (*write)(struct gb*, addr, byte);
-  byte rom_switch;
-  byte ram_switch;
-  byte ram_enabled;
-  byte ram_rom_mode;
+	byte (*read) (struct gb*, addr);
+	void (*write)(struct gb*, addr, byte);
+	byte rom_switch;
+	byte ram_switch;
+	byte ram_enabled;
+	byte ram_rom_mode;
 };
 
 /**Initialize mbc for a given gb, Rom must be loaded prior to this function
