@@ -63,13 +63,13 @@ int        gb_update(struct gb *gb)
 			 "AF(%.2x|%.2x)"
 			 "BC(%.2x|%.2x)"
 			 "DE(%.2x|%.2x)"
-			 "HL(%.2x|%.2x) "
-		 , REG(PC)
-		 , REG(SP)
-		 , REG(A), REG(F)
-		 , REG(B), REG(C)
-		 , REG(D), REG(E)
-		 , REG(H), REG(L));
+			 "HL(%.2x|%.2x)",
+		REG(PC),
+		REG(SP),
+		REG(A), REG(F),
+		REG(B), REG(C),
+		REG(D), REG(E),
+		REG(H), REG(L));
 
 	/* Check for halt/stop flags */
 	if(gb->halt || gb->stop) {

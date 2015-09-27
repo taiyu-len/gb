@@ -6,6 +6,7 @@
 # include "gb_memory.h"
 # include "gb_register.h"
 # include "gb_exec.h"
+# include "gb_screen.h"
 
 //!Gameboy structure.
 /**used to store all gameboy related data */
@@ -14,8 +15,7 @@ struct gb
 	/* Data */
 	union   gb_register reg;
 	struct  gb_memory   mem;
-	/* screen */
-	byte    screen[160 * 144 * 3];
+	gb_screen           screen;
 	/* Timing */
 	short   cycle;
 	int     lcdc_cycle;
