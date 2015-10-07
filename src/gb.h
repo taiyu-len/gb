@@ -36,7 +36,7 @@ struct gb *gb_loadfile(struct gb *gb, char const filename[]);
 
 /** Executets gameboy
  * \param gb to run */
-int        gb_update  (struct gb *gb);
+int gb_update(struct gb *gb);
 
 
 # endif /*_GB_H*/

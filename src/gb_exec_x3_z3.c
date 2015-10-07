@@ -15,7 +15,7 @@ int gb_exec_x3_z3(struct gb *gb, byte op)
 {
 	byte y = OPCODE_Y(op);
 	logf("y%d|",y);
-	switch(y) {
+	switch (y) {
 		case 0: return gb_exec_x3_z3_y0(gb);
 		case 1: return gb_exec_x3_z3_y1(gb);
 		case 2: //Invalid opcode

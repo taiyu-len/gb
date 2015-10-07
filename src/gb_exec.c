@@ -9,7 +9,7 @@ int gb_exec(struct gb *gb,byte opcode)
 {
 	int retval = RET_FAILURE;
 	logf("op=%.2x|x%u|",opcode, OPCODE_X(opcode));
-	switch(OPCODE_X(opcode)) {
+	switch (OPCODE_X(opcode)) {
 		case 0: retval = gb_exec_x0(gb, opcode); break;
 		case 1: retval = gb_exec_x1(gb, opcode); break;
 		case 2: retval = gb_exec_x2(gb, opcode); break;
@@ -18,5 +18,4 @@ int gb_exec(struct gb *gb,byte opcode)
 	logf("\n");
 	return retval;
 }
-
 

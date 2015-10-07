@@ -5,25 +5,25 @@
 int main(int argc, char *argv[])
 {
 	int i = 0;
-	while(--argc)
+	while (--argc)
 	{
 		FILE *file = fopen(argv[++i], "r");
-		if(!file) {
+		if (!file) {
 			perror(NULL);
 			continue;
 		}
 		fseek(file, 0x100, SEEK_SET);
 		unsigned char data[0x50];
-		if(fread(data, 1, 0x50, file) != 0x50) goto end;
+		if (fread(data, 1, 0x50, file) != 0x50) goto end;
 		//print title
 		printf("%d:%.16s\n", i, &data[0x34]);
 		printf("%d:%s Gameboy\n", data[0x43], data[0x43]==0x80?"Color":"");
 		printf("licensee code: %d\n", (data[0x44] << 8) + data[0x45]);
 		printf("gameboytype: %sgameboy\n",data[0x46]==0x03?"super ":"");
 		printf("Cartridge type: ");
-		if(data[0x47] < 0x1F)
+		if (data[0x47] < 0x1F)
 			printf("ROM");
-		switch(data[0x47]) {
+		switch (data[0x47]) {
 			case 0x00: printf(" ONLY");break;
 			case 0x03: printf("+BATTERY");
 			case 0x02: printf(        "+RAM");
@@ -53,10 +53,10 @@ int main(int argc, char *argv[])
 		}
 		putchar('\n');
 		printf("Romsize:");
-		if(data[0x48] <= 6)
+		if (data[0x48] <= 6)
 			printf("%d Banks", 2 << data[0x48]);
 		else
-			switch(data[0x48]) {
+			switch (data[0x48]) {
 				case 0x52: printf("72 Banks"); break;
 				case 0x53: printf("80 Banks"); break;
 				case 0x54: printf("96 Banks"); break;
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 			}
 		putchar('\n');
 		printf("Ramsize:");
-		switch(data[0x49]) {
+		switch (data[0x49]) {
 			case 0x00: printf("None"); break;
 			case 0x01: printf("16Kbits, 1bank"); break;
 			case 0x02: printf("64KBits, 1bank"); break;

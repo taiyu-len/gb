@@ -171,10 +171,10 @@ void(*const TABLE_ALU[8])(struct gb *,byte) =
 char const *STR_ALU[8] = {"ADD A,","ADC A,","SUB","SBC A,","AND","XOR","OR","CP"};
 
 # define GETVAL(V)\
-	if(z==6) {V=READ(REG(HL));}\
+	if (z==6) {V=READ(REG(HL));}\
 	else     {V=REG(r8[TABLE_R[z]]);}
 # define SETVAL(V)\
-	if(z==6) {WRITE(REG(HL), V);}\
+	if (z==6) {WRITE(REG(HL), V);}\
 	else     {REG(r8[TABLE_R[z]])=V;}
 
 void TABLE_ROT_RLC (struct gb *gb, byte op)

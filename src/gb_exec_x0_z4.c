@@ -11,7 +11,7 @@ int gb_exec_x0_z4(struct gb *gb, byte op)
 	logf("INC %s",STR_R[y]);
 
 	//Set byte to given register or special case (HL)
-	if(y==6) {
+	if (y==6) {
 		val = READ(REG(HL));
 		gb->cycle += 8;
 	}
@@ -28,7 +28,7 @@ int gb_exec_x0_z4(struct gb *gb, byte op)
 
 	//Increment byte
 	++val;
-	if(y == 6){ WRITE(REG(HL), val); }
+	if (y == 6){ WRITE(REG(HL), val); }
 	else      { REG(r8[TABLE_R[y]]) = val; }
 
 	CND_FLAG(FLAG_Z,val == 0);

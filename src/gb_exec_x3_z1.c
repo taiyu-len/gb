@@ -22,7 +22,7 @@ int gb_exec_x3_z1(struct gb *gb, byte op)
 
 	logf("q%d|",q);
 
-	switch(q) {
+	switch (q) {
 		case 0: return gb_exec_x3_z1_q0(gb,op);
 		case 1: return gb_exec_x3_z1_q1(gb,op);
 	}
@@ -46,7 +46,7 @@ int gb_exec_x3_z1_q1(struct gb *gb, byte op)
 	byte p = OPCODE_P(op);
 
 	logf("p%d|",p);
-	switch(p) {
+	switch (p) {
 		case 0: return gb_exec_x3_z1_q1_p0(gb);
 		case 1: return gb_exec_x3_z1_q1_p1(gb);
 		case 2: return gb_exec_x3_z1_q1_p2(gb);

@@ -29,7 +29,7 @@ int gb_exec_x0_z7(struct gb *gb, byte op)
 {
 	byte y = OPCODE_Y(op);
 	logf("y%d|",y);
-	switch(y) {
+	switch (y) {
 		case 0: return gb_exec_x0_z7_y0(gb);
 		case 1: return gb_exec_x0_z7_y1(gb);
 		case 2: return gb_exec_x0_z7_y2(gb);
@@ -117,11 +117,11 @@ int gb_exec_x0_z7_y4(struct gb *gb)
 {
 	logf("DAA");
 
-	if((REG(A)& 0xF) > 9 || GET_FLAG(FLAG_H)) {
+	if ((REG(A)& 0xF) > 9 || GET_FLAG(FLAG_H)) {
 		REG(A) += 0x06;
 	}
 	//Check for second Carry
-	if((REG(A) >> 4) > 9 || GET_FLAG(FLAG_C)) {
+	if ((REG(A) >> 4) > 9 || GET_FLAG(FLAG_C)) {
 		REG(A) += 0x60;
 		SET_FLAG(FLAG_C);
 	}

@@ -16,12 +16,12 @@ int gb_exec_x3_z0(struct gb *gb, byte op)
 	byte y = OPCODE_Y(op);
 
 	//Conditional
-	if(y < 4) {
+	if (y < 4) {
 		logf("RET %s",STR_CC[y]);
 
 		gb->cycle += 8;
 		//Return if condition is true
-		if(TABLE_CC[y](gb)) {
+		if (TABLE_CC[y](gb)) {
 			//Pop 2 bytes from address for stackpointer and jump to it
 			REG(PC) = POP();
 			gb->cycle += 12;
@@ -30,7 +30,7 @@ int gb_exec_x3_z0(struct gb *gb, byte op)
 	//GAMEBOY Specific functions
 	else {
 		logf("y%d|",y);
-		switch(y - 4) {
+		switch (y - 4) {
 			case 0: return gb_exec_x3_z0_y4(gb);
 			case 1: return gb_exec_x3_z0_y5(gb);
 			case 2: return gb_exec_x3_z0_y6(gb);

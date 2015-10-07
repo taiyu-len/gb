@@ -11,7 +11,7 @@ static int gb_exec_x0_z3_q1(struct gb*, byte);
 int gb_exec_x0_z3(struct gb *gb, byte op)
 {
 	logf("q%d|",OPCODE_Q(op));
-	switch(OPCODE_Q(op)) {
+	switch (OPCODE_Q(op)) {
 		case 0:return gb_exec_x0_z3_q0(gb, op);
 		case 1:return gb_exec_x0_z3_q1(gb, op);
 	}

@@ -8,8 +8,8 @@ int gb_exec_x3_z4(struct gb *gb, byte op)
 	REG(PC) += 2;
 
 	byte y = OPCODE_Y(op);
-	if(y < 4) {
-		if(TABLE_CC[y](gb)) {
+	if (y < 4) {
+		if (TABLE_CC[y](gb)) {
 			PUSH(REG(PC));
 			REG(PC) = address;
 			gb->cycle += 12;

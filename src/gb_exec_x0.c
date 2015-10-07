@@ -12,7 +12,7 @@
 int gb_exec_x0(struct gb *gb,byte opcode)
 {
 	logf("z%d|",OPCODE_Z(opcode));
-	switch(OPCODE_Z(opcode))
+	switch (OPCODE_Z(opcode))
 	{
 		case 0: return gb_exec_x0_z0(gb,opcode);
 		case 1: return gb_exec_x0_z1(gb,opcode);

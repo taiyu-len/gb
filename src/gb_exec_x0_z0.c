@@ -26,7 +26,7 @@ int gb_exec_x0_z0(struct gb *gb, byte op)
 {
 	byte y = OPCODE_Y(op);
 	logf("y%d|",y);
-	switch(y)
+	switch (y)
 	{
 		case 0 : return gb_exec_x0_z0_y0 (gb);
 		case 1 : return gb_exec_x0_z0_y1 (gb);
@@ -84,7 +84,7 @@ int gb_exec_x0_z0_y47(struct gb *gb, byte op)
 	byte y = OPCODE_Y(op) - 4;
 	logf("JR %s,%d", STR_CC[y], offset);
 	//Jump if condition is true
-	if(TABLE_CC[y](gb)) {
+	if (TABLE_CC[y](gb)) {
 		//jump relative to initial PC.
 		REG(PC) += offset;
 		gb->cycle += 4;

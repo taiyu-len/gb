@@ -8,7 +8,7 @@ int gb_exec_x3_z2(struct gb *gb, byte op)
 
 	byte y = OPCODE_Y(op);
 	logf("y%d|",y);
-	switch(y) {
+	switch (y) {
 	case 0:
 	case 1:
 	case 2:
@@ -16,7 +16,7 @@ int gb_exec_x3_z2(struct gb *gb, byte op)
 		logf("JP %s,0x%x",STR_CC[y], address);
 		REG(PC) += 2;
 		gb->cycle += 12;
-		if(TABLE_CC[y](gb)) {
+		if (TABLE_CC[y](gb)) {
 			REG(PC) = address;
 			gb->cycle += 4;
 		}

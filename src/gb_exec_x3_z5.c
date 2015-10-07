@@ -7,9 +7,9 @@ static int gb_exec_x3_z5_q1(struct gb*);
 
 int gb_exec_x3_z5(struct gb *gb, byte opcode)
 {
-	if(OPCODE_Q(opcode) == 0)
+	if (OPCODE_Q(opcode) == 0)
 		return gb_exec_x3_z5_q0(gb, opcode);
-	if(OPCODE_P(opcode) == 0)
+	if (OPCODE_P(opcode) == 0)
 		return gb_exec_x3_z5_q1(gb);
 	return RET_FAILURE;
 }

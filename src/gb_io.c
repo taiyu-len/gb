@@ -38,7 +38,8 @@ void gb_io_init(struct gb *gb)
 	io[IO_KEY1 - 0xFF00] = 0x00;
 }
 
-char const * const gb_io_str[0x100] = {
+char const * const gb_io_str[0x100] =
+{
 #define ENUM_TO_STR(NAME) [NAME - 0xFF00] = #NAME
 	ENUM_TO_STR(IO_P1),
 	ENUM_TO_STR(IO_SB),

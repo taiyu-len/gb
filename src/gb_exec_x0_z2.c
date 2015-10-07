@@ -21,16 +21,16 @@ static int gb_exec_x0_z2_q1_p3(struct gb *);
 int gb_exec_x0_z2(struct gb *gb,byte op)
 {
 	logf("q%d|p%d|",OPCODE_Q(op),OPCODE_P(op));
-	switch(OPCODE_Q(op)) {
+	switch (OPCODE_Q(op)) {
 		case 0:
-			switch(OPCODE_P(op)) {
+			switch (OPCODE_P(op)) {
 				case 0: return gb_exec_x0_z2_q0_p0(gb);
 				case 1: return gb_exec_x0_z2_q0_p1(gb);
 				case 2: return gb_exec_x0_z2_q0_p2(gb);
 				case 3: return gb_exec_x0_z2_q0_p3(gb);
 			}
 		case 1:
-			switch(OPCODE_P(op)){
+			switch (OPCODE_P(op)){
 				case 0: return gb_exec_x0_z2_q1_p0(gb);
 				case 1: return gb_exec_x0_z2_q1_p1(gb);
 				case 2: return gb_exec_x0_z2_q1_p2(gb);

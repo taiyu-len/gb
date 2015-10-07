@@ -4,7 +4,7 @@ int gb_exec_cb(struct gb *gb, byte opcode)
 {
 	byte x = OPCODE_X(opcode);
 	logf("x%d|",x);
-	switch(x) {
+	switch (x) {
 		case 0: return gb_exec_cb_x0(gb, opcode);
 		case 1: return gb_exec_cb_x1(gb, opcode);
 		case 2: return gb_exec_cb_x2(gb, opcode);
@@ -18,17 +18,17 @@ int gb_exec_cb_x0(struct gb *gb, byte op)
 	logf("%s %s",STR_ROT[OPCODE_Y(op)], STR_R[OPCODE_Z(op)]);
 
 	gb->cycle += 8;
-	if(OPCODE_Z(op) == 6)
+	if (OPCODE_Z(op) == 6)
 		gb->cycle += 8;
 
 	TABLE_ROT[OPCODE_Y(op)](gb, op);
 	return RET_SUCCESS;
 }
 # define GETVAL(V)\
-	if(z==6) {V=READ(REG(HL));}\
+	if (z==6) {V=READ(REG(HL));}\
 	else     {V=REG(r8[TABLE_R[z]]);}
 # define SETVAL(V)\
-	if(z==6) {WRITE(REG(HL), V);}\
+	if (z==6) {WRITE(REG(HL), V);}\
 	else     {REG(r8[TABLE_R[z]])=V;}
 //BIT y, r[z]
 int gb_exec_cb_x1(struct gb *gb, byte op)
@@ -44,7 +44,7 @@ int gb_exec_cb_x1(struct gb *gb, byte op)
 	logf("BIT %d,%s",y,STR_R[z]);
 
 	gb->cycle += 8;
-	if(z==6) gb->cycle += 8;
+	if (z==6) gb->cycle += 8;
 
 	return RET_SUCCESS;
 }
@@ -62,7 +62,7 @@ int gb_exec_cb_x2(struct gb *gb, byte op)
 	logf("RES %d,%s",y,STR_R[z]);
 
 	gb->cycle += 8;
-	if(z==6) gb->cycle += 8;
+	if (z==6) gb->cycle += 8;
 
 	return RET_SUCCESS;
 }
@@ -80,7 +80,7 @@ int gb_exec_cb_x3(struct gb *gb, byte op)
 	logf("SET %d,%s",y,STR_R[z]);
 
 	gb->cycle += 8;
-	if(z==6) gb->cycle += 8;
+	if (z==6) gb->cycle += 8;
 
 	return RET_SUCCESS;
 }

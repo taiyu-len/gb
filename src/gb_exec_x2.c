@@ -10,7 +10,7 @@ int gb_exec_x2(struct gb *gb, byte op)
 	logf("%s %s",STR_ALU[y], STR_R[z]);
 
 	//Special case of (HL)
-	if(z==6) {
+	if (z==6) {
 		TABLE_ALU[y](gb, READ(REG(HL)));
 		gb->cycle += 4;
 	}

@@ -9,7 +9,7 @@ int gb_exec_x0_z6(struct gb *gb, byte op)
 
 	logf("LD %s,0x%x",STR_R[y], a8);
 	//Special case of loading into memory (HL)
-	if(y==6) {
+	if (y==6) {
 		 WRITE(REG(HL), a8);
 		 gb->cycle += 4;
 	}
